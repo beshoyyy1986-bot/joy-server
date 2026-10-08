@@ -10,33 +10,115 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiPublicAddCardsRouteImport } from './routes/api/public/add-cards'
+import { Route as ApiPublicCheckProxyRouteImport } from './routes/api/public/check-proxy'
+import { Route as ApiPublicFetchCardsRouteImport } from './routes/api/public/fetch-cards'
+import { Route as ApiPublicPingRouteImport } from './routes/api/public/ping'
+import { Route as ApiPublicAdminKeysRouteImport } from './routes/api/public/admin/keys'
+import { Route as ApiPublicAdminLoginRouteImport } from './routes/api/public/admin/login'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicAddCardsRoute = ApiPublicAddCardsRouteImport.update({
+  id: '/api/public/add-cards',
+  path: '/api/public/add-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicCheckProxyRoute = ApiPublicCheckProxyRouteImport.update({
+  id: '/api/public/check-proxy',
+  path: '/api/public/check-proxy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicFetchCardsRoute = ApiPublicFetchCardsRouteImport.update({
+  id: '/api/public/fetch-cards',
+  path: '/api/public/fetch-cards',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicPingRoute = ApiPublicPingRouteImport.update({
+  id: '/api/public/ping',
+  path: '/api/public/ping',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAdminKeysRoute = ApiPublicAdminKeysRouteImport.update({
+  id: '/api/public/admin/keys',
+  path: '/api/public/admin/keys',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicAdminLoginRoute = ApiPublicAdminLoginRouteImport.update({
+  id: '/api/public/admin/login',
+  path: '/api/public/admin/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/api/public/add-cards': typeof ApiPublicAddCardsRoute
+  '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
+  '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
+  '/api/public/ping': typeof ApiPublicPingRoute
+  '/api/public/admin/keys': typeof ApiPublicAdminKeysRoute
+  '/api/public/admin/login': typeof ApiPublicAdminLoginRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/api/public/add-cards': typeof ApiPublicAddCardsRoute
+  '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
+  '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
+  '/api/public/ping': typeof ApiPublicPingRoute
+  '/api/public/admin/keys': typeof ApiPublicAdminKeysRoute
+  '/api/public/admin/login': typeof ApiPublicAdminLoginRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/api/public/add-cards': typeof ApiPublicAddCardsRoute
+  '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
+  '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
+  '/api/public/ping': typeof ApiPublicPingRoute
+  '/api/public/admin/keys': typeof ApiPublicAdminKeysRoute
+  '/api/public/admin/login': typeof ApiPublicAdminLoginRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/api/public/add-cards'
+    | '/api/public/check-proxy'
+    | '/api/public/fetch-cards'
+    | '/api/public/ping'
+    | '/api/public/admin/keys'
+    | '/api/public/admin/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/api/public/add-cards'
+    | '/api/public/check-proxy'
+    | '/api/public/fetch-cards'
+    | '/api/public/ping'
+    | '/api/public/admin/keys'
+    | '/api/public/admin/login'
+  id:
+    | '__root__'
+    | '/'
+    | '/api/public/add-cards'
+    | '/api/public/check-proxy'
+    | '/api/public/fetch-cards'
+    | '/api/public/ping'
+    | '/api/public/admin/keys'
+    | '/api/public/admin/login'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ApiPublicAddCardsRoute: typeof ApiPublicAddCardsRoute
+  ApiPublicCheckProxyRoute: typeof ApiPublicCheckProxyRoute
+  ApiPublicFetchCardsRoute: typeof ApiPublicFetchCardsRoute
+  ApiPublicPingRoute: typeof ApiPublicPingRoute
+  ApiPublicAdminKeysRoute: typeof ApiPublicAdminKeysRoute
+  ApiPublicAdminLoginRoute: typeof ApiPublicAdminLoginRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +130,59 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/add-cards': {
+      id: '/api/public/add-cards'
+      path: '/api/public/add-cards'
+      fullPath: '/api/public/add-cards'
+      preLoaderRoute: typeof ApiPublicAddCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/check-proxy': {
+      id: '/api/public/check-proxy'
+      path: '/api/public/check-proxy'
+      fullPath: '/api/public/check-proxy'
+      preLoaderRoute: typeof ApiPublicCheckProxyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/fetch-cards': {
+      id: '/api/public/fetch-cards'
+      path: '/api/public/fetch-cards'
+      fullPath: '/api/public/fetch-cards'
+      preLoaderRoute: typeof ApiPublicFetchCardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/ping': {
+      id: '/api/public/ping'
+      path: '/api/public/ping'
+      fullPath: '/api/public/ping'
+      preLoaderRoute: typeof ApiPublicPingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/admin/keys': {
+      id: '/api/public/admin/keys'
+      path: '/api/public/admin/keys'
+      fullPath: '/api/public/admin/keys'
+      preLoaderRoute: typeof ApiPublicAdminKeysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/admin/login': {
+      id: '/api/public/admin/login'
+      path: '/api/public/admin/login'
+      fullPath: '/api/public/admin/login'
+      preLoaderRoute: typeof ApiPublicAdminLoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ApiPublicAddCardsRoute: ApiPublicAddCardsRoute,
+  ApiPublicCheckProxyRoute: ApiPublicCheckProxyRoute,
+  ApiPublicFetchCardsRoute: ApiPublicFetchCardsRoute,
+  ApiPublicPingRoute: ApiPublicPingRoute,
+  ApiPublicAdminKeysRoute: ApiPublicAdminKeysRoute,
+  ApiPublicAdminLoginRoute: ApiPublicAdminLoginRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
