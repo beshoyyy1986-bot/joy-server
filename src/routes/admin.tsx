@@ -127,7 +127,7 @@ function KeysPanel({ pass, onLogout }: { pass: string; onLogout: () => void }) {
     const r = await fetch("/api/public/admin/keys" + (method === "DELETE" && body?.["id"] ? `?id=${body["id"]}` : ""), {
       method,
       headers: { "Content-Type": "application/json", "x-admin-pass": pass },
-      body: body && method !== "DELETE" ? JSON.stringify(body) : undefined,
+      body: body && method !== "DELETE" ? JSON.stringify(body) : null,
     });
     return r.json();
   }
@@ -292,7 +292,7 @@ function KeysPanel({ pass, onLogout }: { pass: string; onLogout: () => void }) {
                   <div className="flex gap-2 flex-wrap">
                     {revealed[k.id] ? (
                       <button
-                        onClick={() => copy(revealed[k.id])}
+                        onClick={() => copy(revealed[k.id] ?? "")}
                         className="text-xs px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white"
                       >
                         نسخ
