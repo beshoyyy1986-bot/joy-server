@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ApiPublicAddCardsRouteImport } from './routes/api/public/add-cards'
 import { Route as ApiPublicCheckProxyRouteImport } from './routes/api/public/check-proxy'
 import { Route as ApiPublicFetchCardsRouteImport } from './routes/api/public/fetch-cards'
@@ -20,6 +21,11 @@ import { Route as ApiPublicAdminLoginRouteImport } from './routes/api/public/adm
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiPublicAddCardsRoute = ApiPublicAddCardsRouteImport.update({
@@ -55,6 +61,7 @@ const ApiPublicAdminLoginRoute = ApiPublicAdminLoginRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/add-cards': typeof ApiPublicAddCardsRoute
   '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
   '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/add-cards': typeof ApiPublicAddCardsRoute
   '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
   '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
   '/api/public/add-cards': typeof ApiPublicAddCardsRoute
   '/api/public/check-proxy': typeof ApiPublicCheckProxyRoute
   '/api/public/fetch-cards': typeof ApiPublicFetchCardsRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
     | '/api/public/add-cards'
     | '/api/public/check-proxy'
     | '/api/public/fetch-cards'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
     | '/api/public/add-cards'
     | '/api/public/check-proxy'
     | '/api/public/fetch-cards'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
     | '/api/public/add-cards'
     | '/api/public/check-proxy'
     | '/api/public/fetch-cards'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
   ApiPublicAddCardsRoute: typeof ApiPublicAddCardsRoute
   ApiPublicCheckProxyRoute: typeof ApiPublicCheckProxyRoute
   ApiPublicFetchCardsRoute: typeof ApiPublicFetchCardsRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/add-cards': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
   ApiPublicAddCardsRoute: ApiPublicAddCardsRoute,
   ApiPublicCheckProxyRoute: ApiPublicCheckProxyRoute,
   ApiPublicFetchCardsRoute: ApiPublicFetchCardsRoute,
